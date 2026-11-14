@@ -40,7 +40,7 @@ Mapa de carpetas y destino de cada una, según el `README.md` de la propia plant
 |---|---|---|
 | `uis/website` | Web corporativa pública (ruta `/`) | Marca y copy alineados con `BRIEFING.md` |
 | `uis/backoffice` | App interna, layout propio y separado del sitio público | Vista de entrada en `/` |
-| `services/` | APIs y workers backend | Una subcarpeta = un servicio, con su README |
+| `services/` | APIs y workers backend (APIs y workers en segundo plano) | Una subcarpeta = un servicio, con su propia documentación técnica y funcional |
 | `agents/` | Agentes de IA de producto | Una subcarpeta = un agente, con su README |
 | `skills/` | Capacidades reutilizables de esos agentes | Una subcarpeta por skill |
 | `mcps/` | Servidores MCP que conectan los modelos con sistemas internos | Una subcarpeta = un servidor |
@@ -54,7 +54,14 @@ Mapa de carpetas y destino de cada una, según el `README.md` de la propia plant
 | `.agents/` | Reglas y skills del **agente de código** | No es código de producto |
 | `memory-bank/` | Contexto persistente del proyecto | Se actualiza en cada PR |
 
-Ejemplos para Nexova: `services/selection-api`, `agents/support-agent`, `mcps/hubspot-mcp`, `packages/shared-types`, `workflows/sales-follow-up`, `scripts/seed-fake-candidates`.
+**Los `README.md` de la plantilla son la fuente de verdad** sobre qué va en cada carpeta. Antes de crear archivos o subcarpetas nuevas, léelos. Si un README contradice esta tabla, manda el README y hay que actualizar esta tabla.
+
+- **`uis/README.md`**: agrupa todos los proyectos con interfaz de usuario y se organiza **por áreas de la compañía**. Los dos proyectos principales son `website` (presencia web pública) y `backoffice` (app interna de administración, pensada para alojar varias soluciones en un mismo proyecto: autenticación, gestión de personas, gestión de operaciones y comunicación interna). Cada subcarpeta incluye su documentación técnica y funcional.
+- **`services/README.md`**: cada subcarpeta corresponde a **un servicio concreto** — sus ejemplos son `admin-api` y `data-processor-worker` — con su documentación técnica y funcional.
+
+Ambos README piden **registrar cada aplicación o servicio nuevo** en el README de la carpeta, indicando su objetivo, la tecnología usada y cómo ejecutarlo.
+
+Ejemplos para Nexova: `services/selection-api`, `services/support-api` (los dashboards y portales internos se agrupan dentro de `uis/backoffice`), `agents/support-agent`, `mcps/hubspot-mcp`, `packages/shared-types`, `workflows/sales-follow-up`, `scripts/seed-fake-candidates`.
 
 ### Límites que no se cruzan
 
@@ -96,7 +103,7 @@ Los conectores se implementan como servidores MCP en `mcps/` o como integracione
 - **SLA de soporte:** 24 h. Las automatizaciones de soporte registran sus tiempos y escalan a un humano.
 - **Observabilidad desde el inicio:** todo servicio nuevo emite logs estructurados, porque es una carencia explícita de la empresa.
 - **Accesibilidad y rendimiento** obligatorios en `uis/website`.
-- **Una subcarpeta, un componente**, con su propio `README.md`, en `services/`, `agents/`, `mcps/` y `packages/`.
+- **Una subcarpeta, un componente**, con su propio `README.md`, en `services/`, `agents/`, `mcps/` y `packages/`. Cada componente nuevo se **registra además en el README de su carpeta padre**, con su objetivo, la tecnología usada y cómo ejecutarlo, como piden los README de la plantilla.
 
 ## 6. Entorno de desarrollo y despliegue
 
