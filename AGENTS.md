@@ -27,8 +27,7 @@
 | 7 | `.agents/rules/README.md` | Índice de reglas de desarrollo y cuándo aplica cada una |
 | 8 | `AGENTS.md` | Este protocolo |
 | 9 | El `README.md` de la carpeta donde va a trabajar | Qué debe ir en esa carpeta y qué no |
-| 10 | `memory-bank/techContext.md` §3 | Los límites que no se cruzan (`.agents/` vs `agents/`, `packages/` vs `shared/`…) |
-| 11 | `.agents/skills/delivery-checklist/SKILL.md` | Checklist de entrega a ejecutar antes del PR |
+| 10 | `.agents/skills/delivery-checklist/SKILL.md` | Checklist de entrega a ejecutar antes del PR |
 
 **Si el agente no puede leer alguno de estos archivos, no empieza a editar.** Lo dice y pide indicaciones.
 
@@ -78,7 +77,24 @@ Estas rutas **no se modifican sin confirmación humana explícita**. Si una tare
 
 ---
 
-## 4. Convenciones que el agente debe respetar
+## 4. Dónde va el código de producto
+
+Estas son las rutas que mapea la plantilla. **Ninguna aplicación se crea en este hito**: lo que se documenta aquí es dónde deberá colocarse el código cuando llegue el momento, para que ningún agente tenga dudas y nadie invente un árbol paralelo.
+
+| Ruta | Qué va aquí cuando se cree | Estado hoy |
+|---|---|---|
+| `uis/` | Proyectos frontend de la compañía, agrupados por área | Existe con su `README.md`. **Sin proyectos dentro** |
+| `uis/website` | Web corporativa pública. Ruta de entrada `/`. Marca y copy tomados de `BRIEFING.md` | **No creada** |
+| `uis/backoffice` | App interna de la compañía, con layout propio y separado del sitio público. Vista de entrada en `/` | **No creada** |
+| `services/` | APIs y servicios backend | Existe con su `README.md`. **Sin servicios dentro** |
+
+**Regla obligatoria:** antes de crear contenido en cualquiera de estas rutas, **lee su `README.md`**. Las instrucciones del README manda sobre cualquier suposición o ejemplo genérico. El detalle de cada carpeta está en `memory-bank/techContext.md` §3 y las restricciones en `.agents/rules/app-layer-placement.md`.
+
+**No se crea** ningún árbol paralelo: nada de `apps/`, `frontend/`, `api/`, `backend/` ni similares. Los frontends van en `uis/`; los backends, en `services/`.
+
+---
+
+## 5. Convenciones que el agente debe respetar
 
 - **Dónde vive el código nuevo:** web pública en `uis/website`, app interna en `uis/backoffice`, APIs y workers en `services/<servicio>`, agentes de producto en `agents/<agente>`, servidores MCP en `mcps/<servidor>-mcp`, automatizaciones en `workflows/`, paquetes compartidos en `packages/<paquete>`, recursos sin empaquetar en `shared/`. El detalle está en `memory-bank/techContext.md` §3.
 - **Un componente, una subcarpeta, un README.** Cada servicio, agente, servidor MCP o paquete nuevo se documenta en su propio `README.md` y se registra en el README de su carpeta padre.
@@ -91,7 +107,7 @@ Estas rutas **no se modifican sin confirmación humana explícita**. Si una tare
 
 ---
 
-## 5. Cuándo detenerse y preguntar
+## 6. Cuándo detenerse y preguntar
 
 El agente **para y pregunta** (no decide por su cuenta) cuando:
 
@@ -106,7 +122,7 @@ Al preguntar, el agente indica: qué archivo o carpeta quiere tocar, por qué lo
 
 ---
 
-## 6. Errores que el agente no debe cometer
+## 7. Errores que el agente no debe cometer
 
 1. Escribir sobre `main` o commitear sin pasar por la sección 2.
 2. Crear un árbol paralelo o una carpeta de primer nivel sin ADR.
@@ -125,4 +141,5 @@ Al preguntar, el agente indica: qué archivo o carpeta quiere tocar, por qué lo
 - `memory-bank/progress.md` — estado actual del desarrollo.
 - `memory-bank/decisions.md` — decisiones tomadas (ADR).
 - `.agents/rules/README.md` — índice de reglas de desarrollo.
+- `.agents/rules/app-layer-placement.md` — restricciones de ubicación del código.
 - `.agents/skills/delivery-checklist/SKILL.md` — checklist obligatoria antes del PR.
