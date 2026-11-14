@@ -11,7 +11,6 @@ Se activa cuando la tarea toca cualquiera de las carpetas de aplicación. Su obj
 
 ### Rutas de este hito
 
-Estas son las rutas que el proyecto tiene fijadas desde ya. **Ninguna aplicación se crea en este hito**: lo que importa es que el agente sepa dónde deberá trabajar cuando llegue el momento.
 
 | Ruta | Qué va aquí cuando se cree | Estado hoy |
 |---|---|---|
